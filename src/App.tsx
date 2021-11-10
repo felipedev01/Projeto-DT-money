@@ -1,9 +1,14 @@
 
 import styled from 'styled-components'
+import { GlobalStyle } from './styles/global';
 
 const Title=styled.h1`
   
-color:blue;
+color:black;
+font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+font-weight:bolder;
+font-style:italic;
+font-size:100px;
 
 `
 export function App() {
@@ -11,9 +16,10 @@ export function App() {
     <div className="App">
 
     <Title>
-    <h1>Hello World</h1>
+    Hello World
     </Title>
     
+    <GlobalStyle ></GlobalStyle>
           
      
     </div>
