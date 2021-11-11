@@ -4,7 +4,7 @@ import { GlobalStyle } from './styles/global';
 
 const Title=styled.h1`
   
-
+font-family:'Mochiy Pop One'
 
 
 `
