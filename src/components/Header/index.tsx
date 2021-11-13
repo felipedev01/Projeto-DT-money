@@ -1,9 +1,22 @@
+
+import { Component } from 'react'
+import logo from '../../Assets/Logo.svg'
+import { Container, Contant } from './style'
+
 export function Header(){
 
     return(
-        <header>
-            Header
-        </header>
+       <Container>
+           <Contant>
+           <img src={logo} alt="Logo" />
+            <button>Nova Transação</button>
+           </Contant>
+           
+       </Container>
+            
+        
+            
+        
     )
 
 

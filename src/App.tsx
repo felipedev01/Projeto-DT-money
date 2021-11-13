@@ -1,4 +1,4 @@
-
+import {Dashboard} from "./components/Dashboard";
 import {Header} from "./components/Header";
 import styled from 'styled-components'
 import { GlobalStyle } from './styles/global';
@@ -15,7 +15,7 @@ export function App() {
 
      <Header></Header>
 
-   
+    <Dashboard></Dashboard>
     
     <GlobalStyle ></GlobalStyle>
           
