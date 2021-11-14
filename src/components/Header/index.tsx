@@ -1,5 +1,5 @@
 
-import { Component } from 'react'
+//import { Component } from 'react'
 import logo from '../../Assets/Logo.svg'
 import { Container, Contant } from './style'
 

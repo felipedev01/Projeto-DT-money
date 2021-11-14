@@ -14,7 +14,7 @@ div{
    margin-top:-2rem;
    border-radius:0.25rem;
    padding:1rem;
-   padding-bottom:1.5rem;
+   padding-bottom:1.6rem;
 };
 
 
