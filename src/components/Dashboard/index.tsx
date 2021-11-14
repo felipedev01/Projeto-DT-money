@@ -1,5 +1,6 @@
 import { Container } from "./style"
 import { Summary } from "../Summary"
+import { TransactionsTable } from "../TransactionsTable"
 export function Dashboard(){
 
     return(
@@ -9,6 +10,8 @@ export function Dashboard(){
  <Container>
 
 <Summary></Summary>
+
+<TransactionsTable></TransactionsTable>
 
  </Container>
 

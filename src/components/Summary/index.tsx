@@ -1,4 +1,6 @@
 import logoEntrada from '../../Assets/Entradas.svg'
+import logoSaida from '../../Assets/Saídas.svg'
+import logoTotal from '../../Assets/Total.svg'
 import { Container} from './style'
 
 export function Summary(){
@@ -24,14 +26,14 @@ export function Summary(){
         <div>
             <header>
                 <p>Saída</p>
-                <img src={logoEntrada} alt="Entrada" />
+                <img src={logoSaida} alt="Saída" />
             </header>
             <strong>R$100,00</strong>
         </div>
-        <div>
+        <div className="Total">
             <header>
                 <p>Total</p>
-                <img src={logoEntrada} alt="Entrada" />
+                <img src={logoTotal} alt="Total" />
             </header>
             <strong>R$100,00</strong>
         </div>
