@@ -1,32 +1,25 @@
 
-import {useState}from 'react'
+
 import logo from '../../Assets/Logo.svg'
 import { Container, Contant } from './style'
-import Modal from 'react-modal';
 
-export function Header(){
 
-    const[isOpenModalTransaction,setisOpenModalTransaction]=useState(false)
+interface headerProps {
 
-    function handleOpenModal(){
+    onOpenNewTransactionModal:()=> void;
+}
 
-         setisOpenModalTransaction(true)
-    }
-    function handleCloseModal(){
+export function Header({onOpenNewTransactionModal}:headerProps){
 
-       setisOpenModalTransaction(false)
-    }
+   
 
     return(
        <Container>
            <Contant>
            <img src={logo} alt="Logo" />
-            <button type="button" onClick={handleOpenModal}>Nova Transação</button>
+            <button type="button" onClick={onOpenNewTransactionModal}>Nova Transação</button>
            </Contant>
-          <Modal isOpen={isOpenModalTransaction} onRequestClose={handleCloseModal}>
-
-              <p>Transaçôes</p>
-          </Modal>
+        
        </Container>
             
         
