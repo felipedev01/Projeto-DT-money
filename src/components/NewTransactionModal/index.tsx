@@ -34,14 +34,17 @@ export function NewTransactionModal({isOpen,onRequestClose}:NewTrasactionModalPr
         
       <RadioButton type="button" 
       onClick={()=>{setType('deposit')}}
-      isActive={type==='deposit'}>
+      isActive={type==='deposit'}
+      ActiveColor='green'>
       <img src={entrada} alt="Entrada" /><span>Entrada</span>
       
         
       </RadioButton>
       <RadioButton type="button" 
       onClick={()=>{setType('withDraw')}}
-      isActive={type==='withDraw'}>
+      isActive={type==='withDraw'}
+      ActiveColor='red'>
+      
       <img src={saida} alt="Saída" /><span>Saída</span>
       </RadioButton>
      

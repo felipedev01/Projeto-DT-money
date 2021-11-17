@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {darken} from 'polished'
+import {darken ,transparentize} from 'polished'
 
 export const Container=styled.form`
 
@@ -67,7 +67,11 @@ button[type="submit"]{
 interface RadioButtonProps{
 
 isActive:boolean;
+ActiveColor:'green'|'red';
 
+}const colors={
+    green:'#33CC95',
+    red:'#E62E4D',
 }
 export const RadioButton=styled.button<RadioButtonProps>`
 
@@ -75,7 +79,7 @@ export const RadioButton=styled.button<RadioButtonProps>`
      height:4rem;
      border:1px solid #d7d7d7;
      border-radius:0.25rem;
-     background:${(props)=>props.isActive ? 'red':'transparent'};
+     background:${(props)=>props.isActive ? transparentize( 0.8 ,colors[props.ActiveColor]):'transparent'};
      display:flex;
      text-align:center;
      justify-content:center;
