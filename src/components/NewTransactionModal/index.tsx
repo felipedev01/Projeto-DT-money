@@ -1,9 +1,9 @@
 import Modal from 'react-modal';
-import { Container, TrasactionTypeContainer } from './style';
+import { Container, TrasactionTypeContainer,RadioButton } from './style';
 import fecharModal from '../../Assets/Vector.svg'
 import entrada from '../../Assets/Entradas.svg'
 import saida from '../../Assets/Saídas.svg'
-
+import {useState} from 'react';
 interface NewTrasactionModalProps {
 
   isOpen:boolean;
@@ -11,9 +11,12 @@ interface NewTrasactionModalProps {
 }
 
 export function NewTransactionModal({isOpen,onRequestClose}:NewTrasactionModalProps){
-    return(
 
-   
+  const[type , setType]=useState(' ')
+
+  
+    return(
+ 
         <Modal 
         isOpen={isOpen}
         onRequestClose={onRequestClose}
@@ -28,14 +31,28 @@ export function NewTransactionModal({isOpen,onRequestClose}:NewTrasactionModalPr
        <input placeholder="Titulo"></input>
        <input type="Number" placeholder="Preço"></input>
        <TrasactionTypeContainer>
-         <button type="button"><img src={entrada} alt="Entrada" /><span>Entrada</span></button>
-         <button type="button"><img src={saida} alt="Saída" /><span>Saída</span></button>
+        
+      <RadioButton type="button" 
+      onClick={()=>{setType('deposit')}}
+      isActive={type==='deposit'}>
+      <img src={entrada} alt="Entrada" /><span>Entrada</span>
+      
+        
+      </RadioButton>
+      <RadioButton type="button" 
+      onClick={()=>{setType('withDraw')}}
+      isActive={type==='withDraw'}>
+      <img src={saida} alt="Saída" /><span>Saída</span>
+      </RadioButton>
+     
        </TrasactionTypeContainer>
        <input placeholder="Categoria"/>
        <button type="submit">Cadastrar</button>
 
        </Container>
    </Modal>
+  
  
     )
+    
 }

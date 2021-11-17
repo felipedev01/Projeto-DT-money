@@ -51,22 +51,7 @@ button[type="submit"]{
  grid-template-columns:1fr 1fr; 
  gap:0.5rem;
 
- button{
-     height:4rem;
-     border:1px solid #d7d7d7;
-     border-radius:0.25rem;
-     background:transparent;
-     display:flex;
-     text-align:center;
-     justify-content:center;
-     display: flex;
-     align-items: center;
-
-     transition:border-color 0.2s;
-     &:hover{
-         border-color:${darken(0.1 ,'#d7d7d7')}
-     }
- }
+ 
  img{
      height:20px;
      width:20px;
@@ -77,5 +62,36 @@ button[type="submit"]{
      font-size:1rem;
      color:var(--text-title)
  }
+  
+`;
+interface RadioButtonProps{
+
+isActive:boolean;
+
+}
+export const RadioButton=styled.button<RadioButtonProps>`
+
+
+     height:4rem;
+     border:1px solid #d7d7d7;
+     border-radius:0.25rem;
+     background:${(props)=>props.isActive ? 'red':'transparent'};
+     display:flex;
+     text-align:center;
+     justify-content:center;
+     display: flex;
+     align-items: center;
+
+     transition:border-color 0.2s;
+     &:hover{
+         border-color:${darken(0.3 ,'#d7d7d7')}
+     }
+
+    
+    
+
+
+
+
 
 `
