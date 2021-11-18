@@ -4,6 +4,8 @@ import fecharModal from '../../Assets/Vector.svg'
 import entrada from '../../Assets/Entradas.svg'
 import saida from '../../Assets/Saídas.svg'
 import {FormEvent, useState} from 'react';
+import { appendFile } from 'fs';
+import { api } from '../../services/api'
 interface NewTrasactionModalProps {
 
   isOpen:boolean;
@@ -21,7 +23,15 @@ export function NewTransactionModal({isOpen,onRequestClose}:NewTrasactionModalPr
   function HandleCreateNewTransaction(event:FormEvent){
 
      event.preventDefault();
-     console.log(title,value,category,type)
+     
+    const data = {
+        title,
+        value,
+        category,
+        type
+     }
+     
+     api.post('/Transactions',data)
   }
 
   
