@@ -3,7 +3,7 @@ import { Container, TrasactionTypeContainer,RadioButton } from './style';
 import fecharModal from '../../Assets/Vector.svg'
 import entrada from '../../Assets/Entradas.svg'
 import saida from '../../Assets/Saídas.svg'
-import {useState} from 'react';
+import {FormEvent, useState} from 'react';
 interface NewTrasactionModalProps {
 
   isOpen:boolean;
@@ -13,6 +13,16 @@ interface NewTrasactionModalProps {
 export function NewTransactionModal({isOpen,onRequestClose}:NewTrasactionModalProps){
 
   const[type , setType]=useState(' ')
+
+  const[title, setTitle]=useState('')
+  const[value , setValue]=useState(0)
+  const[category, setCategory]=useState('')
+
+  function HandleCreateNewTransaction(event:FormEvent){
+
+     event.preventDefault();
+     console.log(title,value,category,type)
+  }
 
   
     return(
@@ -26,10 +36,21 @@ export function NewTransactionModal({isOpen,onRequestClose}:NewTrasactionModalPr
         <button type="button" onClick={onRequestClose}
         className="react-modal-close">
         <img src={fecharModal} alt="Fechar Modal" /></button>
-        <Container>
+        <Container onSubmit={HandleCreateNewTransaction}>
       <h2>Cadastrar Transação</h2>      
-       <input placeholder="Titulo"></input>
-       <input type="Number" placeholder="Preço"></input>
+       <input 
+       placeholder="Titulo"
+       value={title}
+       onChange={event=>setTitle(event.target.value)}
+       ></input>
+       <input
+       type="Number" 
+       placeholder="Preço"
+       value={value}
+       onChange={event=>setValue(Number(event.target.value))}
+       >
+
+       </input>
        <TrasactionTypeContainer>
         
       <RadioButton type="button" 
@@ -49,7 +70,11 @@ export function NewTransactionModal({isOpen,onRequestClose}:NewTrasactionModalPr
       </RadioButton>
      
        </TrasactionTypeContainer>
-       <input placeholder="Categoria"/>
+       <input 
+       placeholder="Categoria"
+       value={category}
+       onChange={event=>setCategory(event.target.value)}
+       />
        <button type="submit">Cadastrar</button>
 
        </Container>
