@@ -8,6 +8,25 @@ createServer({
   models:{
     Transaction:Model,
   },
+
+  seeds(server){
+    server.db.loadData({
+
+      transactions:[
+        {
+          id:1,
+          title:"Recebimento salário",
+          amount:5000,
+          category:"Venda",
+          createdAt:new Date(),
+          type:"deposit",
+         
+         
+          
+        },
+      ]
+    })
+  },
    routes(){
 
     this.namespace = 'api'

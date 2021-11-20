@@ -1,18 +1,31 @@
-import { useEffect } from 'react'
+import { useEffect,useState} from 'react'
 import { api } from '../../services/api'
 import { Container } from './style'
 
 export function TransactionsTable(){
 
+    const[transaction , setTransaction]=useState<typeTransaction[]>([])
+
     useEffect(()=>{
         api.get('/transactions')
-        .then(response => console.log(response.data))
+        .then(response => setTransaction(response.data.transactions))
+        
 
     },[]
 
     )
-       
 
+    interface typeTransaction {
+
+        id:string,
+        title:string,
+        amount:string,
+        category:string,
+        createdAt:string,
+        type:string,
+
+    }
+    
     return(
         
         <Container>
@@ -25,30 +38,25 @@ export function TransactionsTable(){
                 
             </thead>
             <tbody>
-                <tr>
-                    <td>Desenvolvimento de Sites</td>
-                    <td className="deposit">R$ 12.000</td>
-                    <td>Venda</td>
-                    <td>14/11/2021</td>
+
+                {transaction.map(transaction=>{
+
+                  return(
+
+                    <tr key={transaction.id}>
+                    
+                    <td>{transaction.title}</td>
+                    <td className="deposit">{transaction.amount}</td>
+                    <td>{transaction.category}</td>
+                    <td>{transaction.createdAt}</td>
                 </tr>
-                <tr>
-                    <td>Desenvolvimento de Sites</td>
-                    <td className="withDraw">R$ -12.000</td>
-                    <td>Venda</td>
-                    <td>14/11/2021</td>
-                </tr>
-                <tr>
-                    <td>Desenvolvimento de Sites</td>
-                    <td>R$ 12.000</td>
-                    <td>Venda</td>
-                    <td>14/11/2021</td>
-                </tr>
-                <tr>
-                    <td>Desenvolvimento de Sites</td>
-                    <td>R$ 12.000</td>
-                    <td>Venda</td>
-                    <td>14/11/2021</td>
-                </tr>
+
+                  )
+
+
+                })}
+                
+                
             </tbody>
         </table>
         </Container>

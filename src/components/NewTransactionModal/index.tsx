@@ -22,6 +22,7 @@ export function NewTransactionModal({isOpen,onRequestClose}:NewTrasactionModalPr
 
   function HandleCreateNewTransaction(event:FormEvent){
 
+    window.alert("Botão funcionando")
      event.preventDefault();
      
     const data = {
