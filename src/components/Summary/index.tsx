@@ -2,8 +2,12 @@ import logoEntrada from '../../Assets/Entradas.svg'
 import logoSaida from '../../Assets/Saídas.svg'
 import logoTotal from '../../Assets/Total.svg'
 import { Container} from './style'
+import {useContext} from 'react'
+import { TransactionsContext } from '../../TransactionsContext'
 
 export function Summary(){
+
+    const data= useContext(TransactionsContext)
 
     return(
 
