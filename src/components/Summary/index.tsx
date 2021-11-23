@@ -9,7 +9,7 @@ export function Summary(){
 
     const data= useContext(TransactionsContext)
 
-    console.log(data)
+   
 
     return(
 
