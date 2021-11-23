@@ -24,6 +24,17 @@ createServer({
          
           
         },
+        {
+          id:2,
+          title:"Aluguel",
+          amount:1500,
+          category:"Venda",
+          createdAt:new Date(),
+          type:"withDraw",
+         
+         
+          
+        }
       ]
     })
   },
