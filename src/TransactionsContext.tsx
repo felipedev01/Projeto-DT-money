@@ -15,8 +15,23 @@ interface TransactionProviderProps {
 
     children:ReactNode;
 }
+interface TransactionInput {
+    title:string,
+    amount:Number,
+    type:string,
+    category:string,
+}
+interface TransactionsContextData {
 
-export const TransactionsContext=createContext<typeTransaction[]>([]);
+    transaction:typeTransaction[];
+   //
+    createTransaction:(transaction:TransactionInput) => void;
+}
+
+export const TransactionsContext=createContext<TransactionsContextData>({
+
+} as TransactionsContextData
+);
 
 export function TransactionsProvider({children}:TransactionProviderProps){
 
@@ -31,12 +46,21 @@ export function TransactionsProvider({children}:TransactionProviderProps){
 
     },[]
 
+   
+
     )
+
+    function createTransaction(transaction:TransactionInput){
+
+       
+         
+         api.post('/Transactions',transaction)
+    }
 
     
 
 return(
-    <TransactionsContext.Provider value={transaction}>
+    <TransactionsContext.Provider value={{transaction, createTransaction}}>
         {children}
     </TransactionsContext.Provider>
 )

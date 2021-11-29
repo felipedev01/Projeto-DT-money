@@ -3,8 +3,8 @@ import { Container, TrasactionTypeContainer,RadioButton } from './style';
 import fecharModal from '../../Assets/Vector.svg'
 import entrada from '../../Assets/Entradas.svg'
 import saida from '../../Assets/Saídas.svg'
-import {FormEvent, useState} from 'react';
-import { appendFile } from 'fs';
+import {FormEvent, useState,useContext} from 'react';
+import { TransactionsContext } from '../../TransactionsContext'
 import { api } from '../../services/api'
 interface NewTrasactionModalProps {
 
@@ -14,6 +14,7 @@ interface NewTrasactionModalProps {
 
 export function NewTransactionModal({isOpen,onRequestClose}:NewTrasactionModalProps){
 
+  const transactions=useContext(TransactionsContext)
   const[type , setType]=useState(' ')
 
   const[title, setTitle]=useState('')
@@ -22,17 +23,10 @@ export function NewTransactionModal({isOpen,onRequestClose}:NewTrasactionModalPr
 
   function HandleCreateNewTransaction(event:FormEvent){
 
-    window.alert("Botão funcionando")
+    
      event.preventDefault();
      
-    const data = {
-        title,
-        value,
-        category,
-        type
-     }
-     
-     api.post('/Transactions',data)
+    
   }
 
   

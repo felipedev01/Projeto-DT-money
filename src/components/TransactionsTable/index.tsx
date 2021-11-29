@@ -5,11 +5,16 @@ import { Container } from './style'
 
 export function TransactionsTable(){
 
-    const transaction=useContext(TransactionsContext)
+    const {transaction}=useContext(TransactionsContext)
+
+   
+    
     
     return(
         
         <Container>
+
+           
             <table>
             <thead>
                 <th>Titulo</th>
