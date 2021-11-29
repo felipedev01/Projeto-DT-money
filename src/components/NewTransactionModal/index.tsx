@@ -14,7 +14,7 @@ interface NewTrasactionModalProps {
 
 export function NewTransactionModal({isOpen,onRequestClose}:NewTrasactionModalProps){
 
-  const transactions=useContext(TransactionsContext)
+  const {createTransaction}=useContext(TransactionsContext)
   const[type , setType]=useState(' ')
 
   const[title, setTitle]=useState('')
@@ -26,7 +26,15 @@ export function NewTransactionModal({isOpen,onRequestClose}:NewTrasactionModalPr
     
      event.preventDefault();
      
-    
+    createTransaction({
+
+      title,
+      amount:value,
+      category,
+      type,
+    }
+
+    )
   }
 
   
