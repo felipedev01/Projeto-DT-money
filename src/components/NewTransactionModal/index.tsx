@@ -35,6 +35,7 @@ export function NewTransactionModal({isOpen,onRequestClose}:NewTrasactionModalPr
     }
 
     )
+    onRequestClose()
   }
 
   
