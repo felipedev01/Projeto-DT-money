@@ -23,7 +23,7 @@ interface TransactionInput {
 }
 interface TransactionsContextData {
 
-    transaction:typeTransaction[];
+    transactions:typeTransaction[];
    //
     createTransaction:(transaction:TransactionInput) => Promise<void>;
 }
@@ -37,7 +37,7 @@ export function TransactionsProvider({children}:TransactionProviderProps){
 
     
 
-    const[transaction , setTransaction]=useState<typeTransaction[]>([])
+    const[transactions , setTransaction]=useState<typeTransaction[]>([])
 
     useEffect(()=>{
         api.get('/transactions')
@@ -54,14 +54,16 @@ export function TransactionsProvider({children}:TransactionProviderProps){
 
        
          
-      const response =  await api.post('/Transactions',transactionInput)
+      const response =  await api.post('/Transactions',{...transactionInput,createdAt:new Date()})
       const {transaction}= response.data
+
+      setTransaction([...transactions, transaction])
     }
 
     
 
 return(
-    <TransactionsContext.Provider value={{transaction, createTransaction}}>
+    <TransactionsContext.Provider value={{transactions, createTransaction}}>
         {children}
     </TransactionsContext.Provider>
 )

@@ -5,7 +5,7 @@ import { Container } from './style'
 
 export function TransactionsTable(){
 
-    const {transaction}=useContext(TransactionsContext)
+    const {transactions}=useContext(TransactionsContext)
 
    
     
@@ -25,22 +25,22 @@ export function TransactionsTable(){
             </thead>
             <tbody>
 
-                {transaction.map(transaction=>{
+                {transactions.map(transactions=>{
 
                   return(
 
-                    <tr key={transaction.id}>
+                    <tr key={transactions.id}>
                     
-                    <td>{transaction.title}</td>
-                    <td className={transaction.type}>{new Intl.NumberFormat('pt-BR',{
+                    <td>{transactions.title}</td>
+                    <td className={transactions.type}>{new Intl.NumberFormat('pt-BR',{
                         style:'currency',
                         currency:'BRL',
-                    }).format(Number(transaction.amount))
+                    }).format(Number(transactions.amount))
                     }</td>
-                    <td>{transaction.category}</td>
+                    <td>{transactions.category}</td>
                     <td>{new Intl.DateTimeFormat('pt-BR',{
                         
-                    }).format(new Date(transaction.createdAt))
+                    }).format(new Date(transactions.createdAt))
                     }</td>
                 </tr>
 
