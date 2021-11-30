@@ -21,7 +21,7 @@ export function NewTransactionModal({isOpen,onRequestClose}:NewTrasactionModalPr
   const[value , setValue]=useState(0)
   const[category, setCategory]=useState('')
 
-  function HandleCreateNewTransaction(event:FormEvent){
+  async function HandleCreateNewTransaction(event:FormEvent){
 
     
      event.preventDefault();
