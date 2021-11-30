@@ -50,11 +50,12 @@ export function TransactionsProvider({children}:TransactionProviderProps){
 
     )
 
-    async function createTransaction(transaction:TransactionInput){
+    async function createTransaction(transactionInput:TransactionInput){
 
        
          
-        await api.post('/Transactions',transaction)
+      const response =  await api.post('/Transactions',transactionInput)
+      const {transaction}= response.data
     }
 
     
