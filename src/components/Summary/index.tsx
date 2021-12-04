@@ -7,9 +7,26 @@ import { TransactionsContext } from '../../TransactionsContext'
 
 export function Summary(){
 
-    const data= useContext(TransactionsContext)
+    const {transactions}= useContext(TransactionsContext)
 
-   
+  
+
+   const totalDepositos= transactions.reduce((acc , transations)=>{
+
+    if(transations.type==='deposit'){
+
+        return acc + transations.amount
+            
+    }return acc;
+   },0)
+
+  const totalSaidas = transactions.reduce((acc, transactions)=>{
+
+    if(transactions.type==='withDraw'){
+        return acc + transactions.amount
+    }
+    return acc;
+  },0)
 
     return(
 
@@ -24,7 +41,8 @@ export function Summary(){
             </header>
                 
             
-            <strong>R$100,00</strong>
+            
+            <strong>{totalDepositos}</strong>
         </div>
             
            
@@ -34,14 +52,14 @@ export function Summary(){
                 <p>Saída</p>
                 <img src={logoSaida} alt="Saída" />
             </header>
-            <strong>R$100,00</strong>
+            <strong>{totalSaidas}</strong>
         </div>
         <div className="Total">
             <header>
                 <p>Total</p>
                 <img src={logoTotal} alt="Total" />
             </header>
-            <strong>R$100,00</strong>
+            <strong>{totalDepositos-totalSaidas}</strong>
         </div>
         </Container>
 

@@ -5,7 +5,7 @@ interface typeTransaction {
 
     id:string,
     title:string,
-    amount:Number,
+    amount:number,
     category:string,
     createdAt:string,
     type:string,
