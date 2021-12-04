@@ -54,7 +54,13 @@ export function Summary(){
                 
             
             
-            <strong>{summary.deposits}</strong>
+            <strong>
+            {new Intl.NumberFormat('pt-BR',{
+                        style:'currency',
+                        currency:'BRL',
+                    }).format(Number(summary.deposits))
+                    }
+                    </strong>
         </div>
             
            
@@ -64,14 +70,26 @@ export function Summary(){
                 <p>Saída</p>
                 <img src={logoSaida} alt="Saída" />
             </header>
-            <strong>{summary.withDraws}</strong>
+            <strong>
+            {new Intl.NumberFormat('pt-BR',{
+                        style:'currency',
+                        currency:'BRL',
+                    }).format(Number(summary.withDraws))
+                    }
+                    </strong>
         </div>
         <div className="Total">
             <header>
                 <p>Total</p>
                 <img src={logoTotal} alt="Total" />
             </header>
-            <strong>{summary.total}</strong>
+            <strong>
+            {new Intl.NumberFormat('pt-BR',{
+                        style:'currency',
+                        currency:'BRL',
+                    }).format(Number(summary.total))
+                    }
+            </strong>
         </div>
         </Container>
 
