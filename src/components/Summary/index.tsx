@@ -4,6 +4,7 @@ import logoTotal from '../../Assets/Total.svg'
 import { Container} from './style'
 import {useContext} from 'react'
 import { TransactionsContext } from '../../TransactionsContext'
+import { access } from 'fs'
 
 export function Summary(){
 
@@ -11,22 +12,33 @@ export function Summary(){
 
   
 
-   const totalDepositos= transactions.reduce((acc , transations)=>{
+ 
+  const summary=transactions.reduce((acc,transactions)=>{
 
-    if(transations.type==='deposit'){
+    if(transactions.type==='deposit'){
 
-        return acc + transations.amount
+        
+            acc.deposits+=transactions.amount
+            acc.total +=transactions.amount
             
-    }return acc;
-   },0)
-
-  const totalSaidas = transactions.reduce((acc, transactions)=>{
-
-    if(transactions.type==='withDraw'){
-        return acc + transactions.amount
+    }else{
+       
+            acc.withDraws+=transactions.amount
+            acc.total-=transactions.amount
+           
     }
-    return acc;
-  },0)
+    return acc; 
+    },
+   
+  
+  
+  {
+      deposits:0,
+      withDraws:0,
+      total:0,
+  })
+
+  console.log(summary)
 
     return(
 
@@ -42,7 +54,7 @@ export function Summary(){
                 
             
             
-            <strong>{totalDepositos}</strong>
+            <strong>{summary.deposits}</strong>
         </div>
             
            
@@ -52,14 +64,14 @@ export function Summary(){
                 <p>Saída</p>
                 <img src={logoSaida} alt="Saída" />
             </header>
-            <strong>{totalSaidas}</strong>
+            <strong>{summary.withDraws}</strong>
         </div>
         <div className="Total">
             <header>
                 <p>Total</p>
                 <img src={logoTotal} alt="Total" />
             </header>
-            <strong>{totalDepositos-totalSaidas}</strong>
+            <strong>{summary.total}</strong>
         </div>
         </Container>
 
