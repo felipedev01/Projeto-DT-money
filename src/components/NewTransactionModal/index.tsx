@@ -3,9 +3,9 @@ import { Container, TrasactionTypeContainer,RadioButton } from './style';
 import fecharModal from '../../Assets/Vector.svg'
 import entrada from '../../Assets/Entradas.svg'
 import saida from '../../Assets/Saídas.svg'
-import {FormEvent, useState,useContext} from 'react';
-import { TransactionsContext } from '../../TransactionsContext'
-import { api } from '../../services/api'
+import {FormEvent, useState} from 'react';
+
+import { useTransactions } from '../../hooks/useTransactions';
 interface NewTrasactionModalProps {
 
   isOpen:boolean;
@@ -14,7 +14,7 @@ interface NewTrasactionModalProps {
 
 export function NewTransactionModal({isOpen,onRequestClose}:NewTrasactionModalProps){
 
-  const {createTransaction}=useContext(TransactionsContext)
+  const {createTransaction}=useTransactions()
   const[type , setType]=useState(' ')
 
   const[title, setTitle]=useState('')
